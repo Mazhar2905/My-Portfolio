@@ -72,18 +72,30 @@ const Contact = () => {
                 <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
                   <Mail className="h-6 w-6 text-primary" />
                 </div>
-                <div>
-                  <h4 className="font-bold text-gray-800 mb-1">Email</h4>
-                  <a 
-                    href="mailto:sayyedmazhar.2905@gmail.com?subject=Portfolio Inquiry"
-                    onClick={handleEmailClick}
-                    className="text-gray-600 hover:text-primary underline"
-                  >
-                    sayyedmazhar.2905@gmail.com
-                  </a>
-                  <p className="text-sm text-gray-500 mt-1">Typically responds within 24 hours</p>
-                </div>
-              </div>
+             <div>
+              <h4 className="font-bold text-gray-800 mb-1">Email</h4>
+              <a 
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=sayyedmazhar.2905@gmail.com&su=Portfolio Inquiry - Data Analyst"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-primary underline"
+                onClick={() => {
+        // Track click
+                if (window.gtag) {
+                  gtag('event', 'click', {
+                    event_category: 'Contact',
+                    event_label: 'Email Link (Gmail Web)'
+                  });
+                }
+              }}
+            >
+              sayyedmazhar.2905@gmail.com
+              </a>
+              <p className="text-sm text-gray-500 mt-1">
+                <span className="font-medium">Tip:</span> Opens Gmail in new tab. If you use another email client, please email: sayyedmazhar.2905@gmail.com
+              </p>
+            </div>
+          </div>
               
               <div className="flex items-start space-x-4">
                 <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
