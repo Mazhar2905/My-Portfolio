@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';  // Add useEffect
+import React, { useState, useEffect } from 'react';
 import { Mail, Phone, MapPin, Send, Linkedin, Github } from 'lucide-react';
 
 const Contact = () => {
@@ -11,8 +11,8 @@ const Contact = () => {
     });
   };
 
-  // FIXED: Better tracking function with delay for navigation
-  const trackContactEvent = (action, label, url = null) => {
+  // SIMPLIFIED tracking function - NO navigation logic
+  const trackContactEvent = (action, label) => {
     // Send to Google Analytics
     if (window.gtag) {
       window.gtag('event', action, {
@@ -20,44 +20,36 @@ const Contact = () => {
         event_label: label,
         value: 1
       });
-      console.log(`📊 Tracked: ${action} - ${label}`); // Debug log
+      console.log(`📊 Tracked: ${action} - ${label}`);
     } else {
       console.warn('Google Analytics not loaded yet');
     }
-    
-    // If there's a URL (for mail/phone links), navigate after tracking
-    if (url) {
-    setTimeout(() => {
-      window.location.href = url;
-    }, 100);
-    // Don't return false - let the <a> tag work normally
-  }
-};
+  };
 
-  // Updated click handlers with URL passing
+  // SIMPLIFIED click handlers - Just track, don't navigate
   const handleEmailClick = (e) => {
-    trackContactEvent('email_click', 'Email Link', 'mailto:sayyedmazhar.2905@gmail.com');
-    console.log('Email click tracked, opening mail client...');
+    trackContactEvent('email_click', 'Email Link');
+    console.log('Email click tracked...');
+    // Let the <a href="mailto:..."> work naturally
   };
 
   const handlePhoneClick = (e) => {
-    e.preventDefault();
-    trackContactEvent('phone_click', 'Phone Link', 'tel:+919876543210');
+    trackContactEvent('phone_click', 'Phone Link');
+    console.log('Phone click tracked...');
+    // Let the <a href="tel:..."> work naturally
   };
 
   const handleLinkedInClick = (e) => {
-    // For external links, tracking happens before navigation
     trackContactEvent('social_click', 'LinkedIn');
-    // Let the default link behavior continue
+    console.log('LinkedIn click tracked...');
+    // Let the <a href="https://..." target="_blank"> work naturally
   };
 
   const handleFormSubmit = (e) => {
-    // Track before Formspree submission
     trackContactEvent('form_submit', 'Contact Form');
     console.log('Form submission tracked');
     // Formspree handles the rest
   };
-
 
   return (
     <section id="contact" className="py-20 bg-gradient-to-b from-white to-blue-50">
@@ -83,9 +75,9 @@ const Contact = () => {
                 <div>
                   <h4 className="font-bold text-gray-800 mb-1">Email</h4>
                   <a 
-                      href="mailto:sayyedmazhar.2905@gmail.com"
-                      onClick={handleEmailClick}
-                      className="text-gray-600 hover:text-primary"
+                    href="mailto:sayyedmazhar.2905@gmail.com?subject=Portfolio Inquiry"
+                    onClick={handleEmailClick}
+                    className="text-gray-600 hover:text-primary underline"
                   >
                     sayyedmazhar.2905@gmail.com
                   </a>
@@ -100,9 +92,9 @@ const Contact = () => {
                 <div>
                   <h4 className="font-bold text-gray-800 mb-1">Phone</h4>
                   <a 
-                      href="tel:+918668324424"
-                      onClick={handlePhoneClick}
-                      className="text-gray-600 hover:text-primary"
+                    href="tel:+918668324424"
+                    onClick={handlePhoneClick}
+                    className="text-gray-600 hover:text-primary underline"
                   >
                     +91 8668324424
                   </a>
@@ -165,7 +157,8 @@ const Contact = () => {
               action="https://formspree.io/f/mldqoqeb" 
               method="POST"
               onSubmit={handleFormSubmit}
-              className="space-y-6">
+              className="space-y-6"
+            >
               <div>
                 <label htmlFor="name" className="block text-gray-700 font-medium mb-2">
                   Your Name
