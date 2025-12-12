@@ -10,7 +10,7 @@ const Contact = () => {
       [e.target.name]: e.target.value
     });
   };
-  
+
   // FIXED: Better tracking function with delay for navigation
   const trackContactEvent = (action, label, url = null) => {
     // Send to Google Analytics
@@ -38,8 +38,8 @@ const Contact = () => {
 
   // Updated click handlers with URL passing
   const handleEmailClick = (e) => {
-    e.preventDefault();
-    trackContactEvent('email_click', 'Email Link', 'mailto:your-email@gmail.com');
+    trackContactEvent('email_click', 'Email Link', 'mailto:sayyedmazhar.2905@gmail.com');
+    console.log('Email click tracked, opening mail client...');
   };
 
   const handlePhoneClick = (e) => {
@@ -141,6 +141,7 @@ const Contact = () => {
                   href="https://github.com/Mazhar2905" 
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={handleLinkedInClick}
                   className="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-gray-600 hover:text-primary hover:shadow-md transition-all duration-300"
                 >
                   <Github className="h-6 w-6" />
@@ -149,6 +150,7 @@ const Contact = () => {
                   href="https://www.kaggle.com/mazharsayyed"
                   target="_blank"
                   rel="noopener noreferrer" 
+                  onClick={handleLinkedInClick}
                   className="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-gray-600 hover:text-primary hover:shadow-md transition-all duration-300"
                 >
                   <div className="text-lg font-bold text-gray-700">K</div>
