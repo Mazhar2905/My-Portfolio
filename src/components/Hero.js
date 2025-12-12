@@ -65,7 +65,22 @@ const Hero = () => {
                  className="text-gray-500 hover:text-primary transition-colors">
                 <Github size={24} />
               </a>
-              <a href="/resume.pdf" className="flex items-center space-x-2 text-gray-600 hover:text-primary">
+              <a 
+                href="/resume/Mazhar_Resume_DataAnalyst.pdf"
+                download="Mazhar_Resume_DataAnalyst.pdf"
+                className="flex items-center space-x-2 text-gray-600 hover:text-primary"
+                onClick={() => {
+              // Track download
+                  if (window.gtag) {
+                    window.gtag('event', 'download', {
+                                    event_category: 'Resume',
+                      event_label: 'Resume Download - Hero',
+                      value: 1
+                    });
+                  }
+                  console.log('Resume download clicked from hero');
+                }}
+              >
                 <Download size={18} />
                 <span>Download CV</span>
               </a>
