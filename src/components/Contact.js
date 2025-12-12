@@ -81,7 +81,7 @@ const Contact = () => {
                 className="text-gray-600 hover:text-primary underline"
                 onClick={() => {
         // Track click
-                if (window.gtag) {
+                  if (typeof gtag !== 'undefined') {
                   gtag('event', 'click', {
                     event_category: 'Contact',
                     event_label: 'Email Link (Gmail Web)'
