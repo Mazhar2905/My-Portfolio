@@ -4,6 +4,13 @@ import { Mail, Phone, MapPin, Send, Linkedin, Github } from 'lucide-react';
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+  
   // FIXED: Better tracking function with delay for navigation
   const trackContactEvent = (action, label, url = null) => {
     // Send to Google Analytics
