@@ -63,7 +63,7 @@ const Contact = () => {
                 <div>
                   <h4 className="font-bold text-gray-800 mb-1">Email</h4>
                   <a 
-                      href="mailto:your-email@gmail.com"
+                      href="sayyedmazhar.2905@gmail.com"
                       onClick={() => trackContactEvent('email_click', 'Email Link')}
                       className="text-gray-600 hover:text-primary"
                   >
@@ -80,7 +80,7 @@ const Contact = () => {
                 <div>
                   <h4 className="font-bold text-gray-800 mb-1">Phone</h4>
                   <a 
-                      href="tel:+919876543210"
+                      href="tel:+918668324424"
                       onClick={() => trackContactEvent('phone_click', 'Phone Link')}
                       className="text-gray-600 hover:text-primary"
                   >
