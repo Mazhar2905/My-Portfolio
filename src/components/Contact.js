@@ -10,6 +10,16 @@ const Contact = () => {
     message: ''
   });
 
+  const trackContactEvent = (action, label) => {
+    if (window.gtag) {
+      window.gtag('event', action, {
+        event_category: 'Contact',
+        event_label: label,
+        value: 1
+      });
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
   
@@ -52,7 +62,11 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-gray-800 mb-1">Email</h4>
-                  <a href="mailto:sayyedmazhar.2905@gmail.com" className="text-gray-600 hover:text-primary">
+                  <a 
+                      href="mailto:your-email@gmail.com"
+                      onClick={() => trackContactEvent('email_click', 'Email Link')}
+                      className="text-gray-600 hover:text-primary"
+                  >
                     sayyedmazhar.2905@gmail.com
                   </a>
                   <p className="text-sm text-gray-500 mt-1">Typically responds within 24 hours</p>
@@ -65,7 +79,11 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-gray-800 mb-1">Phone</h4>
-                  <a href="tel:+1234567890" className="text-gray-600 hover:text-primary">
+                  <a 
+                      href="tel:+919876543210"
+                      onClick={() => trackContactEvent('phone_click', 'Phone Link')}
+                      className="text-gray-600 hover:text-primary"
+                  >
                     +91 8668324424
                   </a>
                   <p className="text-sm text-gray-500 mt-1">Available for calls Mon-Fri, 10AM-6PM</p>
@@ -92,6 +110,7 @@ const Contact = () => {
                   href="https://www.linkedin.com/in/sayyedmazhar/" 
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackContactEvent('social_click', 'LinkedIn')}
                   className="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-gray-600 hover:text-primary hover:shadow-md transition-all duration-300"
                 >
                   <Linkedin className="h-6 w-6" />
@@ -120,7 +139,11 @@ const Contact = () => {
           <div className="bg-white p-8 rounded-2xl shadow-sm">
             <h3 className="text-2xl font-bold text-dark mb-6">Send a Message</h3>
             
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form 
+              action="https://formspree.io/f/mldqoqeb" 
+              method="POST"
+              onSubmit={handleSubmit}
+              className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-gray-700 font-medium mb-2">
                   Your Name
