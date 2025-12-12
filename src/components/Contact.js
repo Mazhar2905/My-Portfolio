@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Linkedin, Github } from 'lucide-react';
 
 const Contact = () => {
@@ -11,38 +11,19 @@ const Contact = () => {
     });
   };
 
-  // SIMPLIFIED tracking function - NO navigation logic
+  // Fixed: Use window.gtag to avoid ESLint errors
   const trackContactEvent = (action, label) => {
     // Send to Google Analytics
-      if (typeof gtag !== 'undefined') {
-        gtag('event', action, {
-          event_category: 'Contact',
-         event_label: label,
-         value: 1
+    if (window.gtag) {
+      window.gtag('event', action, {
+        event_category: 'Contact',
+        event_label: label,
+        value: 1
       });
       console.log(`📊 Tracked: ${action} - ${label}`);
     } else {
       console.warn('Google Analytics not loaded yet');
     }
-  };
-
-  // SIMPLIFIED click handlers - Just track, don't navigate
-  const handleEmailClick = (e) => {
-    trackContactEvent('email_click', 'Email Link');
-    console.log('Email click tracked...');
-    // Let the <a href="mailto:..."> work naturally
-  };
-
-  const handlePhoneClick = (e) => {
-    trackContactEvent('phone_click', 'Phone Link');
-    console.log('Phone click tracked...');
-    // Let the <a href="tel:..."> work naturally
-  };
-
-  const handleLinkedInClick = (e) => {
-    trackContactEvent('social_click', 'LinkedIn');
-    console.log('LinkedIn click tracked...');
-    // Let the <a href="https://..." target="_blank"> work naturally
   };
 
   const handleFormSubmit = (e) => {
@@ -68,36 +49,38 @@ const Contact = () => {
             <h3 className="text-2xl font-bold text-dark mb-8">Let's Connect</h3>
             
             <div className="space-y-8">
+              {/* Email Section - FIXED: Uses Gmail web link */}
               <div className="flex items-start space-x-4">
                 <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
                   <Mail className="h-6 w-6 text-primary" />
                 </div>
-             <div>
-              <h4 className="font-bold text-gray-800 mb-1">Email</h4>
-              <a 
-                href="https://mail.google.com/mail/?view=cm&fs=1&to=sayyedmazhar.2905@gmail.com&su=Portfolio Inquiry - Data Analyst"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 hover:text-primary underline"
-                onClick={() => {
-        // Track click
-                  if (typeof gtag !== 'undefined') {
-                  gtag('event', 'click', {
-                    event_category: 'Contact',
-                    event_label: 'Email Link (Gmail Web)'
-                  });
-                }
-                console.log('Opening Gmail compose...');
-              }}
-            >
-              sayyedmazhar.2905@gmail.com
-              </a>
-              <p className="text-sm text-gray-500 mt-1">
-                <span className="font-medium">Tip:</span> Opens Gmail in new tab. If you use another email client, please email: sayyedmazhar.2905@gmail.com
-              </p>
-            </div>
-          </div>
+                <div>
+                  <h4 className="font-bold text-gray-800 mb-1">Email</h4>
+                  <a 
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=sayyedmazhar.2905@gmail.com&su=Portfolio Inquiry - Data Analyst"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-600 hover:text-primary underline"
+                    onClick={() => {
+                      // Track click
+                      if (window.gtag) {
+                        window.gtag('event', 'click', {
+                          event_category: 'Contact',
+                          event_label: 'Email Link'
+                        });
+                      }
+                      console.log('Opening Gmail compose...');
+                    }}
+                  >
+                    sayyedmazhar.2905@gmail.com
+                  </a>
+                  <p className="text-sm text-gray-500 mt-1">
+                    Opens Gmail compose window. I respond within 24 hours.
+                  </p>
+                </div>
+              </div>
               
+              {/* Phone Section */}
               <div className="flex items-start space-x-4">
                 <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
                   <Phone className="h-6 w-6 text-primary" />
@@ -106,8 +89,16 @@ const Contact = () => {
                   <h4 className="font-bold text-gray-800 mb-1">Phone</h4>
                   <a 
                     href="tel:+918668324424"
-                    onClick={handlePhoneClick}
                     className="text-gray-600 hover:text-primary underline"
+                    onClick={() => {
+                      // Track click
+                      if (window.gtag) {
+                        window.gtag('event', 'click', {
+                          event_category: 'Contact',
+                          event_label: 'Phone Link'
+                        });
+                      }
+                    }}
                   >
                     +91 8668324424
                   </a>
@@ -115,6 +106,7 @@ const Contact = () => {
                 </div>
               </div>
               
+              {/* Location Section */}
               <div className="flex items-start space-x-4">
                 <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
                   <MapPin className="h-6 w-6 text-primary" />
@@ -135,8 +127,16 @@ const Contact = () => {
                   href="https://www.linkedin.com/in/sayyedmazhar/" 
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={handleLinkedInClick}
                   className="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-gray-600 hover:text-primary hover:shadow-md transition-all duration-300"
+                  onClick={() => {
+                    // Track click
+                    if (window.gtag) {
+                      window.gtag('event', 'click', {
+                        event_category: 'Social',
+                        event_label: 'LinkedIn'
+                      });
+                    }
+                  }}
                 >
                   <Linkedin className="h-6 w-6" />
                 </a>
@@ -144,8 +144,16 @@ const Contact = () => {
                   href="https://github.com/Mazhar2905" 
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={handleLinkedInClick}
                   className="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-gray-600 hover:text-primary hover:shadow-md transition-all duration-300"
+                  onClick={() => {
+                    // Track click
+                    if (window.gtag) {
+                      window.gtag('event', 'click', {
+                        event_category: 'Social',
+                        event_label: 'GitHub'
+                      });
+                    }
+                  }}
                 >
                   <Github className="h-6 w-6" />
                 </a>
@@ -153,8 +161,16 @@ const Contact = () => {
                   href="https://www.kaggle.com/mazharsayyed"
                   target="_blank"
                   rel="noopener noreferrer" 
-                  onClick={handleLinkedInClick}
                   className="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-gray-600 hover:text-primary hover:shadow-md transition-all duration-300"
+                  onClick={() => {
+                    // Track click
+                    if (window.gtag) {
+                      window.gtag('event', 'click', {
+                        event_category: 'Social',
+                        event_label: 'Kaggle'
+                      });
+                    }
+                  }}
                 >
                   <div className="text-lg font-bold text-gray-700">K</div>
                 </a>
