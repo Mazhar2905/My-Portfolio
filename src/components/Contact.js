@@ -27,14 +27,12 @@ const Contact = () => {
     
     // If there's a URL (for mail/phone links), navigate after tracking
     if (url) {
-      setTimeout(() => {
-        window.location.href = url;
-      }, 100); // Small delay to ensure tracking sends
-      return false; // Prevent default navigation
-    }
-    
-    return true;
-  };
+    setTimeout(() => {
+      window.location.href = url;
+    }, 100);
+    // Don't return false - let the <a> tag work normally
+  }
+};
 
   // Updated click handlers with URL passing
   const handleEmailClick = (e) => {
@@ -85,7 +83,7 @@ const Contact = () => {
                 <div>
                   <h4 className="font-bold text-gray-800 mb-1">Email</h4>
                   <a 
-                      href="sayyedmazhar.2905@gmail.com"
+                      href="mailto:sayyedmazhar.2905@gmail.com"
                       onClick={handleEmailClick}
                       className="text-gray-600 hover:text-primary"
                   >
