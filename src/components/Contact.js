@@ -1,43 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';  // Add useEffect
 import { Mail, Phone, MapPin, Send, Linkedin, Github } from 'lucide-react';
-import toast from 'react-hot-toast';
-
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
-  const trackContactEvent = (action, label) => {
+  // FIXED: Better tracking function with delay for navigation
+  const trackContactEvent = (action, label, url = null) => {
+    // Send to Google Analytics
     if (window.gtag) {
       window.gtag('event', action, {
         event_category: 'Contact',
         event_label: label,
         value: 1
       });
+      console.log(`📊 Tracked: ${action} - ${label}`); // Debug log
+    } else {
+      console.warn('Google Analytics not loaded yet');
     }
+    
+    // If there's a URL (for mail/phone links), navigate after tracking
+    if (url) {
+      setTimeout(() => {
+        window.location.href = url;
+      }, 100); // Small delay to ensure tracking sends
+      return false; // Prevent default navigation
+    }
+    
+    return true;
   };
 
-  const handleSubmit = (e) => {
+  // Updated click handlers with URL passing
+  const handleEmailClick = (e) => {
     e.preventDefault();
-  
-    toast.success('Message sent successfully! I\'ll get back to you soon.');
-  
-  // Optional: Send to console for testing
-    console.log('Form submitted:', formData);
-  
-  // Reset form
-    setFormData({ name: '', email: '', message: '' });
-    };
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    trackContactEvent('email_click', 'Email Link', 'mailto:your-email@gmail.com');
   };
+
+  const handlePhoneClick = (e) => {
+    e.preventDefault();
+    trackContactEvent('phone_click', 'Phone Link', 'tel:+919876543210');
+  };
+
+  const handleLinkedInClick = (e) => {
+    // For external links, tracking happens before navigation
+    trackContactEvent('social_click', 'LinkedIn');
+    // Let the default link behavior continue
+  };
+
+  const handleFormSubmit = (e) => {
+    // Track before Formspree submission
+    trackContactEvent('form_submit', 'Contact Form');
+    console.log('Form submission tracked');
+    // Formspree handles the rest
+  };
+
 
   return (
     <section id="contact" className="py-20 bg-gradient-to-b from-white to-blue-50">
@@ -64,7 +79,7 @@ const Contact = () => {
                   <h4 className="font-bold text-gray-800 mb-1">Email</h4>
                   <a 
                       href="sayyedmazhar.2905@gmail.com"
-                      onClick={() => trackContactEvent('email_click', 'Email Link')}
+                      onClick={handleEmailClick}
                       className="text-gray-600 hover:text-primary"
                   >
                     sayyedmazhar.2905@gmail.com
@@ -81,7 +96,7 @@ const Contact = () => {
                   <h4 className="font-bold text-gray-800 mb-1">Phone</h4>
                   <a 
                       href="tel:+918668324424"
-                      onClick={() => trackContactEvent('phone_click', 'Phone Link')}
+                      onClick={handlePhoneClick}
                       className="text-gray-600 hover:text-primary"
                   >
                     +91 8668324424
@@ -110,7 +125,7 @@ const Contact = () => {
                   href="https://www.linkedin.com/in/sayyedmazhar/" 
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => trackContactEvent('social_click', 'LinkedIn')}
+                  onClick={handleLinkedInClick}
                   className="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-gray-600 hover:text-primary hover:shadow-md transition-all duration-300"
                 >
                   <Linkedin className="h-6 w-6" />
@@ -142,7 +157,7 @@ const Contact = () => {
             <form 
               action="https://formspree.io/f/mldqoqeb" 
               method="POST"
-              onSubmit={handleSubmit}
+              onSubmit={handleFormSubmit}
               className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-gray-700 font-medium mb-2">
