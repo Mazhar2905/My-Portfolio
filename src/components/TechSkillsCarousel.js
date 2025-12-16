@@ -2,13 +2,11 @@ import React from 'react';
 import { 
   SiPython, 
   SiMysql, 
-  SiMicrosoft,  
   SiPandas, 
   SiNumpy, 
   SiJupyter, 
   SiGit, 
-  SiGithub,
-  SiTableau
+  SiGithub
 } from 'react-icons/si';
 import { FaChartBar, FaDatabase, FaFileExcel, FaChartLine, FaCode } from 'react-icons/fa';
 
