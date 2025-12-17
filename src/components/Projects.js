@@ -1,6 +1,6 @@
 import React from 'react';
 import { Calendar, Clock, Zap, Plus } from 'lucide-react';
-import ElectronicsSalesDashboard from './ElectronicsSalesDashboard';
+import ElectronicsSalesDashboard from '../components/ElectronicsSalesDashboard';
 
 const Projects = () => {
   const upcomingProjects = [

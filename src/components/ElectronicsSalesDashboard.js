@@ -1,5 +1,15 @@
 import React, { useState } from 'react';
-import { Play, Download, ExternalLink, BarChart3, Filter, TrendingUp, Users, DollarSign } from 'lucide-react';
+import { 
+  Play, 
+  Download, 
+  ExternalLink, 
+  BarChart3, 
+  Filter, 
+  TrendingUp, 
+  Users, 
+  DollarSign,
+  ArrowLeft 
+} from 'lucide-react';
 
 const ElectronicsSalesDashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -65,19 +75,43 @@ const ElectronicsSalesDashboard = () => {
           // Video Demo Section
           <div className="mb-8">
             <div className="aspect-video bg-gray-900 rounded-xl overflow-hidden mb-6">
-              <div className="w-full h-full flex items-center justify-center">
-                <div className="text-center">
-                  <Play className="h-16 w-16 text-white mb-4 mx-auto" />
-                  <p className="text-white text-lg">Video demo coming soon</p>
-                  <p className="text-gray-400">Recording interactive features...</p>
-                </div>
-              </div>
+              <video 
+                className="w-full h-full object-contain" 
+                controls 
+                controlsList="nodownload"
+              >
+                <source 
+                  src="/videos/electronics-dashboard-demo.mp4" 
+                  type="video/mp4" 
+                />
+                Your browser does not support the video tag.
+              </video>
             </div>
+            
+            {/* Video info and controls */}
+            <div className="flex justify-between items-center mb-4">
+              <div>
+                <h4 className="text-lg font-semibold text-gray-800 dark:text-white">
+                  Electronics Sales Dashboard Demo
+                </h4>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  2-minute walkthrough • Power BI • Interactive Filters
+                </p>
+              </div>
+              <a 
+                href="/videos/electronics-dashboard-demo.mp4" 
+                download
+                className="px-4 py-2 text-sm bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-lg transition"
+              >
+                ⬇️ Download Video
+              </a>
+            </div>
+            
             <button
               onClick={() => setShowVideo(false)}
-              className="text-blue-600 dark:text-blue-400 hover:underline"
+              className="text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-2"
             >
-              ← Back to dashboard details
+              <ArrowLeft className="h-4 w-4" /> Back to dashboard details
             </button>
           </div>
         ) : (
@@ -98,26 +132,7 @@ const ElectronicsSalesDashboard = () => {
                 ))}
               </div>
             </div>
-
-            {/* Screenshots Gallery */}
-            <div className="mb-10">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Dashboard Views</h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {dashboardScreenshots.map((screenshot, index) => (
-                  <div key={index} className="group cursor-pointer">
-                    <div className="aspect-video bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 rounded-lg mb-3 flex items-center justify-center group-hover:opacity-90 transition-opacity">
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-gray-700 dark:text-gray-300 mb-1">{index + 1}</div>
-                        <div className="text-xs text-gray-600 dark:text-gray-400">View {index + 1}</div>
-                      </div>
-                    </div>
-                    <h4 className="font-medium text-gray-900 dark:text-white">{screenshot.title}</h4>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">{screenshot.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
+            
             {/* Technical Details */}
             <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-xl mb-8">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Technical Implementation</h3>
@@ -137,15 +152,15 @@ const ElectronicsSalesDashboard = () => {
                   <ul className="space-y-2 text-gray-700 dark:text-gray-300">
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2"></div>
-                      <span>Total Sales: ₹42.8L (Q4 2023)</span>
+                      <span>Total Sales: ₹27.4 crore (2024)</span>
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-green-500 rounded-full mr-3 mt-2"></div>
-                      <span>Top Region: Maharashtra (32% of sales)</span>
+                      <span>Top Region: North (27% of sales)</span>
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-purple-500 rounded-full mr-3 mt-2"></div>
-                      <span>Best Product: Smartphones (28% revenue)</span>
+                      <span>Best Product: Laptop</span>
                     </li>
                   </ul>
                 </div>
