@@ -49,8 +49,8 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
               </button>
               
               <a
-                href="/resume/Mazhar_Resume_DataAnalyst.pdf"
-                download="Mazhar_Resume_DataAnalyst.pdf"
+                href="/resume/Mazhar_Resume.pdf"
+                download="Mazhar_Resume.pdf"
                 className="bg-primary text-white px-6 py-2 rounded-lg font-medium hover:bg-secondary transition-all duration-300 flex items-center space-x-2"
                 onClick={() => {
           // Track download

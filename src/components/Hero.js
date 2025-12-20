@@ -66,8 +66,8 @@ const Hero = () => {
                 <Github size={24} />
               </a>
               <a 
-                href="/resume/Mazhar_Resume_DataAnalyst.pdf"
-                download="Mazhar_Resume_DataAnalyst.pdf"
+                href="/resume/Mazhar_Resume_.pdf"
+                download="Mazhar_Resume.pdf"
                 className="flex items-center space-x-2 text-gray-600 hover:text-primary"
                 onClick={() => {
               // Track download
