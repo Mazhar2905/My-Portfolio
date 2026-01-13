@@ -66,7 +66,7 @@ const Hero = () => {
                 <Github size={24} />
               </a>
               <a 
-                href="/resume/Mazhar_Resume_.pdf"
+                href="/resume/Mazhar_Resume.pdf"
                 download="Mazhar_Resume.pdf"
                 className="flex items-center space-x-2 text-gray-600 hover:text-primary"
                 onClick={() => {
