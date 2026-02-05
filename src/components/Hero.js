@@ -82,7 +82,7 @@ const Hero = () => {
                 }}
               >
                 <Download size={18} />
-                <span>Download CV</span>
+                <span>Download Resume</span>
               </a>
             </div>
           </div>
@@ -108,7 +108,7 @@ const Hero = () => {
               
               <div className="absolute -bottom-4 -left-4 w-20 h-20 bg-white dark:bg-dark-card rounded-2xl shadow-lg dark:shadow-gray-800 flex items-center justify-center">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-secondary">2024</div>
+                  <div className="text-2xl font-bold text-secondary">2026</div>
                   <div className="text-xs text-gray-500">Graduating</div>
                 </div>
               </div>
