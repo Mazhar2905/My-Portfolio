@@ -4,24 +4,27 @@ import {
   SiMysql, 
   SiPandas, 
   SiNumpy, 
-  SiJupyter, 
   SiGit, 
-  SiGithub
+  SiGithub,
+  SiPytorch,
+  SiFastapi,
+  SiReact,
+  SiTailwindcss
 } from 'react-icons/si';
-import { FaChartBar, FaDatabase, FaFileExcel, FaChartLine, FaCode } from 'react-icons/fa';
+import { FaDatabase, FaCode } from 'react-icons/fa';
 
 const TechSkillsCarousel = () => {
   const skills = [
     { name: 'Python', icon: <SiPython />, color: 'text-blue-500' },
+    { name: 'PyTorch', icon: <SiPytorch />, color: 'text-orange-600' },
+    { name: 'FastAPI', icon: <SiFastapi />, color: 'text-teal-500' },
+    { name: 'React', icon: <SiReact />, color: 'text-blue-400' },
+    { name: 'Tailwind CSS', icon: <SiTailwindcss />, color: 'text-cyan-400' },
     { name: 'SQL', icon: <SiMysql />, color: 'text-blue-600' },
-    { name: 'Power BI', icon: <FaChartLine />, color: 'text-yellow-500' }, 
-    { name: 'Excel', icon: <FaFileExcel />, color: 'text-green-600' },
     { name: 'Pandas', icon: <SiPandas />, color: 'text-purple-500' },
     { name: 'NumPy', icon: <SiNumpy />, color: 'text-blue-400' },
-    { name: 'Data Analysis', icon: <FaChartBar />, color: 'text-teal-500' },
-    { name: 'Jupyter', icon: <SiJupyter />, color: 'text-orange-500' },
     { name: 'Git', icon: <SiGit />, color: 'text-red-500' },
-    { name: 'GitHub', icon: <SiGithub />, color: 'text-gray-800' },
+    { name: 'GitHub', icon: <SiGithub />, color: 'text-gray-800 dark:text-gray-200' },
     { name: 'VS Code', icon: <FaCode />, color: 'text-blue-400' },
     { name: 'Database', icon: <FaDatabase />, color: 'text-indigo-500' },
   ];
@@ -91,13 +94,13 @@ const TechSkillsCarousel = () => {
           </h3>
           <div className="flex flex-wrap justify-center gap-3">
             {[
-              'Advanced DAX',
-              'Tableau',
-              'Machine Learning', 
-              'Big Data',
-              'Cloud Analytics',
-              'Data Storytelling',
-              'Statistical Modeling'
+              'Temporal Attention',
+              'Advanced Deep Learning',
+              'MLOps', 
+              'WebSockets',
+              'Cloud Deployment',
+              'Microservices',
+              'Computer Vision'
             ].map((skill, index) => (
               <div 
                 key={index} 

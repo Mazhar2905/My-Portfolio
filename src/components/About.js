@@ -9,8 +9,8 @@ const About = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-dark mb-4">About Me</h2>
           <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
           <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-            A passionate Computer Science student with a keen interest in extracting 
-            meaningful insights from data.
+            A passionate Computer Science student with a keen interest in building scalable 
+            AI systems and deploying end-to-end full-stack applications.
           </p>
         </div>
         
@@ -41,20 +41,20 @@ const About = () => {
             </div>
             <h3 className="text-xl font-bold text-dark mb-4">Career Goal</h3>
             <p className="text-gray-600 mb-4">
-              To become a proficient Data Analyst who can drive data-informed decisions
+              To become a proficient AI/ML Developer shaping intelligent systems
             </p>
             <ul className="space-y-2">
               <li className="flex items-start">
                 <div className="w-2 h-2 bg-primary rounded-full mr-3 mt-2"></div>
-                <span className="text-gray-600">Bridge the gap between raw data and business strategy</span>
+                <span className="text-gray-600">Bridge the gap between ML research and production</span>
               </li>
               <li className="flex items-start">
                 <div className="w-2 h-2 bg-primary rounded-full mr-3 mt-2"></div>
-                <span className="text-gray-600">Master predictive analytics and data storytelling</span>
+                <span className="text-gray-600">Build high-performance real-time applications</span>
               </li>
               <li className="flex items-start">
                 <div className="w-2 h-2 bg-primary rounded-full mr-3 mt-2"></div>
-                <span className="text-gray-600">Contribute to data-driven product development</span>
+                <span className="text-gray-600">Master full-stack architecture and DevOps</span>
               </li>
             </ul>
           </div>
@@ -64,17 +64,17 @@ const About = () => {
             <div className="space-y-6">
               <div>
                 <div className="flex justify-between mb-1">
-                  <span className="text-gray-700 font-medium">Building Projects</span>
-                  <span className="text-primary font-bold">70%</span>
+                  <span className="text-gray-700 font-medium">Building Sentinel AI</span>
+                  <span className="text-primary font-bold">90%</span>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div className="bg-primary h-2 rounded-full" style={{ width: '70%' }}></div>
+                  <div className="bg-primary h-2 rounded-full" style={{ width: '90%' }}></div>
                 </div>
               </div>
               
               <div>
                 <div className="flex justify-between mb-1">
-                  <span className="text-gray-700 font-medium">Learning Power BI</span>
+                  <span className="text-gray-700 font-medium">Advanced PyTorch & Deep Learning</span>
                   <span className="text-primary font-bold">85%</span>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-2">
@@ -84,11 +84,11 @@ const About = () => {
               
               <div>
                 <div className="flex justify-between mb-1">
-                  <span className="text-gray-700 font-medium">Advanced SQL</span>
-                  <span className="text-primary font-bold">75%</span>
+                  <span className="text-gray-700 font-medium">Full-Stack Deployment (Vercel/Cloud)</span>
+                  <span className="text-primary font-bold">80%</span>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div className="bg-primary h-2 rounded-full" style={{ width: '75%' }}></div>
+                  <div className="bg-primary h-2 rounded-full" style={{ width: '80%' }}></div>
                 </div>
               </div>
             </div>

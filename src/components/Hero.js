@@ -20,7 +20,7 @@ const Hero = () => {
             <h2 className="text-2xl md:text-3xl font-semibold text-gray-700 mb-6 h-12">
               <Typewriter
                 options={{
-                  strings: ['Aspiring Data Analyst', 'Python Developer', 'SQL Expert', 'Power BI Specialist', 'Data Storyteller'],
+                  strings: ['AI/ML Developer', 'Full-Stack Engineer', 'Python & React Expert', 'Data Analyst'],
                   autoStart: true,
                   loop: true,
                   delay: 50,
@@ -30,9 +30,9 @@ const Hero = () => {
             </h2>
             
             <p className="text-gray-600 dark:text-gray-300 text-lg mb-8 leading-relaxed">
-              Transforming complex data into actionable insights. Currently pursuing my 
-              Computer Science degree while mastering Python, SQL, and data visualization 
-              tools to solve real-world problems.
+              Building real-time AI systems and deploying end-to-end full-stack applications. 
+              Currently pursuing my Computer Science degree while mastering PyTorch, React, 
+              FastAPI, and data analytics to solve real-world problems.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
@@ -92,9 +92,9 @@ const Hero = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-full opacity-10 animate-pulse"></div>
               <div className="absolute inset-4 bg-gradient-to-br from-blue-100 to-white rounded-full flex items-center justify-center shadow-2xl">
                 <div className="text-center p-8">
-                  <div className="text-6xl font-bold text-primary mb-4">DA</div>
-                  <div className="text-gray-700 font-medium">Data Analytics</div>
-                  <div className="text-sm text-gray-500 mt-2">Python | SQL | Power BI</div>
+                  <div className="text-6xl font-bold text-primary mb-4">AI</div>
+                  <div className="text-gray-700 font-medium">Artificial Intelligence</div>
+                  <div className="text-sm text-gray-500 mt-2">PyTorch | FastAPI | React</div>
                 </div>
               </div>
               

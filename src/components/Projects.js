@@ -4,17 +4,26 @@ import ElectronicsSalesDashboard from '../components/ElectronicsSalesDashboard';
 import IndiaRoadAccidentAnalysis from '../components/IndiaRoadAccidentAnalysis';
 
 const Projects = () => {
-  const upcomingProjects = [
-    
+  const recentProjects = [
+    {
+      id: 1,
+      title: "Sentinel AI - Real-Time Violence Detection System",
+      description: "A full-stack AI violence detection system using a hybrid ConvNeXt-Tiny + LSTM + Temporal Attention architecture achieving 96.5% test accuracy.",
+      technologies: ["PyTorch", "FastAPI", "React", "WebSocket", "Vercel", "ngrok"],
+      duration: "Completed",
+      status: "Deployed",
+      progress: 100,
+      details: "Features a live React SOC dashboard, forensic video analysis with temporal attention heatmap, and automated Gmail SMTP email alerts. Deployed frontend on Vercel and backend via ngrok tunnel."
+    },
     {
       id: 2,
-      title: "Airline Performance Analysis",
-      description: "Analyzing airline operational data to optimize routes, reduce delays, and improve customer satisfaction metrics.",
-      technologies: ["Python", "SQL", "Tableau", "Statistical Analysis"],
-      duration: "4 weeks",
-      status: "Planning",
-      progress: 10,
-      details: "Focus on flight delay patterns, cancellation causes, baggage handling efficiency, and customer complaint analysis for operational improvements."
+      title: "Local Business Lead Generation Pipeline",
+      description: "Automated lead scraping pipeline using Selenium (JustDial) and OpenStreetMap Overpass API to collect local Jalgaon business contacts.",
+      technologies: ["Python", "Selenium", "OpenStreetMap API", "Google Sheets API"],
+      duration: "Completed",
+      status: "Active",
+      progress: 100,
+      details: "Logs structured lead data (name, phone, category, location) to Google Sheets via API for a streamlined sales outreach pipeline."
     }
   ];
 
@@ -59,17 +68,17 @@ const Projects = () => {
           <IndiaRoadAccidentAnalysis />
         </div>
 
-        {/* Projects in Progress */}
+        {/* Recent AI & Development Projects */}
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
-            Projects in Development
+            Recent AI & Development Projects
           </h2>
           <p className="text-gray-600 dark:text-gray-300 mb-8">
-            Currently building these data analytics projects to expand my portfolio
+            Highlighting my latest work in Machine Learning, Full-Stack Development, and Automation
           </p>
     
           <div className="grid md:grid-cols-2 gap-8">
-            {upcomingProjects.map((project) => (
+            {recentProjects.map((project) => (
               <div 
                 key={project.id} 
                 className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm"
@@ -82,7 +91,7 @@ const Projects = () => {
                     </h3>
                     <div className="flex items-center gap-2 mt-2">
                       <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                        project.status === "In Progress" 
+                        project.status === "Deployed" || project.status === "Active"
                           ? "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300"
                           : "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
                       }`}>
@@ -110,7 +119,7 @@ const Projects = () => {
                           a 15.9155 15.9155 0 0 1 0 31.831
                           a 15.9155 15.9155 0 0 1 0 -31.831"
                         fill="none"
-                        stroke={project.status === "In Progress" ? "#10B981" : "#3B82F6"}
+                        stroke={project.status === "Deployed" || project.status === "Active" ? "#10B981" : "#3B82F6"}
                         strokeWidth="3"
                         strokeDasharray={`${project.progress}, 100`}
                       />
